@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature.Domain", "src\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature.Domain.Tests", "test\Temperature.Domain.Tests\Temperature.Domain.Tests.csproj", "{2A3E50AD-DC00-4B3A-A16D-D596BF5445C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpersTests", "test\HelpersTests\HelpersTests.csproj", "{7AF4CF27-E870-4089-BE23-EB85B4421D38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2A3E50AD-DC00-4B3A-A16D-D596BF5445C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A3E50AD-DC00-4B3A-A16D-D596BF5445C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A3E50AD-DC00-4B3A-A16D-D596BF5445C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF4CF27-E870-4089-BE23-EB85B4421D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF4CF27-E870-4089-BE23-EB85B4421D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF4CF27-E870-4089-BE23-EB85B4421D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF4CF27-E870-4089-BE23-EB85B4421D38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Temperature.Domain\Temperature.Domain.csproj" />
+    <ProjectReference Include="..\HelpersTests\HelpersTests.csproj" />
   </ItemGroup>
 
 </Project>
