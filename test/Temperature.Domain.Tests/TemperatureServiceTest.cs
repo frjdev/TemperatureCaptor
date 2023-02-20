@@ -46,4 +46,5 @@ public class TemperatureServiceTest
 
         Assert.True(actual);
     }
+
 }
