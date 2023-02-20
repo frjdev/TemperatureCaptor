@@ -1,12 +1,17 @@
+using Moq;
+
 namespace Temperature.Domain.Tests;
 
 public class TemperatureServiceTest
 {
-    [Theory]
-    [InlineData(2)]
-    public async Task ShouldBeAbleToReturnATemperature(decimal expected)
+    [Fact]
+    public async Task ShouldBeAbleToReturnATemperature()
     {
-        var temp = new TemperatureService();
+        var expected = 2;
+        var mockTemperatureRepo = new Mock<ITemperatureRepository>();
+        mockTemperatureRepo.Setup(x => x.GetTemperatureAsync()).ReturnsAsync(expected);
+
+        var temp = new TemperatureService(mockTemperatureRepo.Object);
         var actual = await temp.GetTemperatureAsync().ConfigureAwait(false);
 
         Assert.Equal(expected, actual);
