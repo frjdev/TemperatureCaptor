@@ -4,6 +4,11 @@ using Temperature.Domain;
 namespace Temperature.Infrastructure;
 public class TemperatureRepository : ITemperatureRepository
 {
+    private readonly ITemperatureCaptor _captor;
+    public TemperatureRepository(ITemperatureCaptor captor)
+    {
+        _captor = captor;
+    }
     public Task<ImmutableList<Domain.Temperature?>> GetHistoricTempAsync()
     {
         throw new NotImplementedException();

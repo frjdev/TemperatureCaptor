@@ -1,7 +1,7 @@
 namespace Temperature.Infrastructure;
-public static class TemperatureCaptor
+public class TemperatureCaptorGenerator : ITemperatureCaptor
 {
-    public static double GenerateTemp()
+    public double CaptorTemperature()
     {
         var rng = new Random();
         var temparture = rng.Next(-60, 60);
