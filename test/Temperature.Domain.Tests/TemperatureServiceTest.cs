@@ -7,7 +7,7 @@ public class TemperatureServiceTest
     [Fact]
     public async Task ShouldBeAbleToReturnATemperature()
     {
-        var expected = 2;
+        var expected = new Temperature(1, 22, "WARM", DateTime.Now);
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();
         mockTemperatureRepo.Setup(x => x.GetTemperatureAsync()).ReturnsAsync(expected);
 

@@ -9,7 +9,7 @@ public class TemperatureService
         _temperatureRepository = temperatureRepository;
     }
 
-    public async Task<decimal> GetTemperatureAsync()
+    public async Task<Temperature?> GetTemperatureAsync()
     {
         return await _temperatureRepository.GetTemperatureAsync().ConfigureAwait(false);
     }

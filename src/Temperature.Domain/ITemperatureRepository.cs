@@ -1,5 +1,5 @@
 namespace Temperature.Domain;
 public interface ITemperatureRepository
 {
-    Task<decimal> GetTemperatureAsync();
+    Task<Temperature?> GetTemperatureAsync();
 }
