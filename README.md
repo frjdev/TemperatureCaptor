@@ -1,3 +1,6 @@
+## Built with ##
+Ce kata implémente l'architecture hexagonale en utilisant C#.NET Core 7 et suit le cycle TDD red/green/refactor avec xUnit
+
 ## General ##
 Le but de ce kata est de voir comment vous abordez un problème particulier dans un contexte réel.
 
