@@ -7,7 +7,7 @@ public class TemperatureServiceTest
     public async Task ShouldBeAbleToReturnATemperature(decimal expected)
     {
         var temp = new TemperatureService();
-        var actual = temp.GetTempAsync();
+        var actual = await temp.GetTemperatureAsync().ConfigureAwait(false);
 
         Assert.Equal(expected, actual);
     }
