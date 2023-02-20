@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Moq;
 
 namespace Temperature.Domain.Tests;
@@ -22,8 +23,9 @@ public class TemperatureServiceTest
     {
         var expected = new List<Temperature>();
 
+
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();
-        mockTemperatureRepo.Setup(x => x.GetHistoricTempAsync()).ReturnsAsync(expected);
+        mockTemperatureRepo.Setup(x => x.GetHistoricTempAsync())!.ReturnsAsync(expected.ToImmutableList());
 
         var temp = new TemperatureService(mockTemperatureRepo.Object);
         var actual = await temp.GetHistoricTempAsync().ConfigureAwait(false);
