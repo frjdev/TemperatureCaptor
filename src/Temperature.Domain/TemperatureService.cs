@@ -19,4 +19,8 @@ public class TemperatureService
     {
         return await _temperatureRepository.GetHistoricTempAsync().ConfigureAwait(false);
     }
+    public async Task<bool> UpdateRangeStateAsync(int idState, double start, double end)
+    {
+        return await _temperatureRepository.UpdateRangeStateAsync(idState, start, end).ConfigureAwait(false);
+    }
 }

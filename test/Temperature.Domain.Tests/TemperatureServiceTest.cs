@@ -35,14 +35,15 @@ public class TemperatureServiceTest
     [Fact]
     public async Task ShouldBeAbleToUpdateARangeState()
     {
-        var expected = "HOT";
+        var warmTemp = Samples.temperaturesRange.FirstOrDefault();
+        var expected = new TemperatureRange(warmTemp!.Id, warmTemp.State, 25, 40);
 
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();
-        mockTemperatureRepo.Setup(x => x.UpdateRangeStateAsync())!.ReturnsAsync(expected);
+        mockTemperatureRepo.Setup(x => x.UpdateRangeStateAsync(expected!.Id, expected.Start, expected.End)).ReturnsAsync(true);
 
         var temp = new TemperatureService(mockTemperatureRepo.Object);
-        var actual = await temp.UpdateRangeStateAsync().ConfigureAwait(false);
+        var actual = await temp.UpdateRangeStateAsync(expected!.Id, expected.Start, expected.End).ConfigureAwait(false);
 
-        Assert.Equal(expected, actual);
+        Assert.True(actual);
     }
 }
