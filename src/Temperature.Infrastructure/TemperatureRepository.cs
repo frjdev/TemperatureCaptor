@@ -22,6 +22,11 @@ public class TemperatureRepository : ITemperatureRepository
         throw new NotImplementedException();
     }
 
+    public Task<string?> GetTempStateAsync(double temp)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<bool> UpdateRangeStateAsync(int idstate, double start, double end)
     {
         throw new NotImplementedException();

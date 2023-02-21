@@ -23,4 +23,8 @@ public class TemperatureService
     {
         return await _temperatureRepository.UpdateRangeStateAsync(idState, start, end).ConfigureAwait(false);
     }
+    public async Task<string?> GetTempStateAsync(double temperature)
+    {
+        return await _temperatureRepository.GetTempStateAsync(temperature).ConfigureAwait(false);
+    }
 }
