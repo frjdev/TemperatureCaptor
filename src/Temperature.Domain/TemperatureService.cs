@@ -27,10 +27,10 @@ public class TemperatureService : ITemperatureService
     {
         return await _TemperatureRepository.GetTempStateAsync(temperature);
     }
-    public Task<Temperature?> CreateTemperatureAsync(double temperature, string state)
+    public async Task<Temperature?> CreateTemperatureAsync(double temperature, string state)
     {
-        var temperatureDomain = new Temperature(int.MaxValue, temperature, state, DateTime.Now);
+        var temperatureDomain = await _TemperatureRepository.CreateTemperatureAsync(temperature, state);
 
-        return Task.FromResult(temperatureDomain)!;
+        return temperatureDomain!;
     }
 }
