@@ -4,7 +4,7 @@ namespace Temperature.Infrastructure.Tests;
 
 public class TemperatureRepositoryTests
 {
-    private static DbContextOptions<TemperatureContext> BuildSqLiteDatabaseWithInitialData()
+    private static DbContextOptions<TemperatureContext> ConnectToSqLiteDatabaseProduction()
     {
         var workingDirectory = Environment.CurrentDirectory;
         var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName}\src\Temperature.WebAPI";
@@ -21,7 +21,7 @@ public class TemperatureRepositoryTests
     [Fact]
     public async void ShouldBeAbleToReturnTheLast15Temperature()
     {
-        var options = BuildSqLiteDatabaseWithInitialData();
+        var options = ConnectToSqLiteDatabaseProduction();
 
         await using var temperatureContext = new TemperatureContext(options);
         var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
@@ -31,7 +31,7 @@ public class TemperatureRepositoryTests
     [Fact]
     public async void ShouldBeAbleToUpdateHotRangeTemperature()
     {
-        var options = BuildSqLiteDatabaseWithInitialData();
+        var options = ConnectToSqLiteDatabaseProduction();
         var expectedStart = 35;
         var expectedEnd = 60;
 
@@ -47,7 +47,7 @@ public class TemperatureRepositoryTests
     [Fact]
     public async void ShouldBeAbleToUpdateColdRangeTemperature()
     {
-        var options = BuildSqLiteDatabaseWithInitialData();
+        var options = ConnectToSqLiteDatabaseProduction();
         var expectedStart = 15;
         var expectedEnd = -60;
 
@@ -63,7 +63,7 @@ public class TemperatureRepositoryTests
     [Fact]
     public async void ShouldBeAbleToUpdateWarmRangeTemperature()
     {
-        var options = BuildSqLiteDatabaseWithInitialData();
+        var options = ConnectToSqLiteDatabaseProduction();
         var expectedStart = 20;
         var expectedEnd = 30;
 
@@ -81,7 +81,7 @@ public class TemperatureRepositoryTests
     [Fact]
     public async void ShouldBeAbleToCreateANewTemperature()
     {
-        var options = BuildSqLiteDatabaseWithInitialData();
+        var options = ConnectToSqLiteDatabaseProduction();
         var temperature = 15;
         var state = "WARM";
 
