@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<ITemperatureRepository, TemperatureRepository>();
 builder.Services.AddTransient<ITemperatureService, TemperatureService>();
+builder.Services.AddTransient<ITemperatureCaptor, TemperatureCaptorGenerator>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
