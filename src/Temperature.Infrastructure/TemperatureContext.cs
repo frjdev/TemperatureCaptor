@@ -1,4 +1,4 @@
-using HelpersTests;
+using Helpers;
 using Microsoft.EntityFrameworkCore;
 using Temperature.Domain;
 

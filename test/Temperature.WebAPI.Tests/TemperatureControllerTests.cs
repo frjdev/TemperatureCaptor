@@ -1,6 +1,5 @@
 using System.Collections.Immutable;
 using System.Net;
-using HelpersTests;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -24,7 +23,6 @@ public class TemperatureControllerTests : IClassFixture<TestWebApplicationFactor
 
         Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
 
-
         var responseAsString = await httpResponse.Content.ReadAsStringAsync();
         Assert.NotNull(responseAsString);
 
@@ -39,7 +37,6 @@ public class TemperatureControllerTests : IClassFixture<TestWebApplicationFactor
         var httpResponse = await _HttpClient.GetAsync(@$"{RequestBaseUri}\Last15Temperatures");
 
         Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
-
 
         var responseAsString = await httpResponse.Content.ReadAsStringAsync();
         Assert.NotNull(responseAsString);

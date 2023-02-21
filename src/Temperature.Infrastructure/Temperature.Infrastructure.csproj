@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\test\HelpersTests\HelpersTests.csproj" />
+    <ProjectReference Include="..\..\test\HelpersTests\Helpers.csproj" />
     <ProjectReference Include="..\Temperature.Domain\Temperature.Domain.csproj" />
   </ItemGroup>
 

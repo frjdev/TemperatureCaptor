@@ -1,5 +1,5 @@
 
-namespace HelpersTests;
+namespace Helpers;
 public class Samples
 {
     public static readonly List<Temperature.Domain.Temperature?> Temperatures = new ()

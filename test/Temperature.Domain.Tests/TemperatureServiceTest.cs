@@ -1,5 +1,5 @@
 using System.Collections.Immutable;
-using HelpersTests;
+using Helpers;
 using Moq;
 
 namespace Temperature.Domain.Tests;
