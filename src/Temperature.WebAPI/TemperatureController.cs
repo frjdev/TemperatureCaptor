@@ -25,8 +25,8 @@ public class TemperatureController : ControllerBase
         return TypedResults.Ok(TemperatureView.FromDomain(temp));
     }
 
-    [HttpGet("{temperature}")]
-    public async Task<IResult> GetTemperature(double temperature)
+    [HttpGet("state/{temperature}")]
+    public async Task<IResult> GetTemperatureState(double temperature)
     {
         var state = await _TemperatureService.GetTempStateAsync(temperature);
         if (state == null)
@@ -35,6 +35,7 @@ public class TemperatureController : ControllerBase
         }
         return TypedResults.Ok(state);
     }
+
     [HttpGet("Last15Temperatures")]
     public async Task<IResult> GetLast15Temperatures()
     {
@@ -45,6 +46,7 @@ public class TemperatureController : ControllerBase
         }
         return TypedResults.Ok(state);
     }
+
     [HttpPut("{state}")]
     public async Task<IResult> UpdateState(string state, TemperatureUpdateModel temperatureUpdateModel)
     {

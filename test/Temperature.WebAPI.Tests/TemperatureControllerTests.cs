@@ -28,7 +28,6 @@ public class TemperatureControllerTests : IClassFixture<TestWebApplicationFactor
         var actualValue = JsonConvert.DeserializeObject<TemperatureView>(responseAsString);
 
         Assert.NotNull(actualValue);
-
     }
 
 }
