@@ -23,8 +23,25 @@ public sealed class TemperatureContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<TemperatureData>().HasData(Samples.Temperatures!);
+        modelBuilder.Entity<TemperatureData>().HasData(Samples.Temperatures!.Select(TempFromDomain));
 
-        modelBuilder.Entity<TemperatureRange>().HasData(Samples.TemperaturesRange!);
+        modelBuilder.Entity<TemperatureDataRange>().HasData(Samples.TemperaturesRange!.Select(RangeFromDomain));
     }
+
+    private static TemperatureData TempFromDomain(Domain.Temperature? temperature)
+        => new TemperatureData()
+        {
+            Id = temperature!.Id,
+            Temp = temperature!.Temp,
+            State = temperature.State,
+            Date = temperature.Date
+        };
+    private static TemperatureDataRange RangeFromDomain(TemperatureRange? temperature)
+        => new TemperatureDataRange()
+        {
+            Id = temperature!.Id,
+            State = temperature!.State,
+            Start = temperature.Start,
+            End = temperature.End
+        };
 }

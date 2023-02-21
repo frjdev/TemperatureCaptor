@@ -101,10 +101,10 @@ public class TemperatureRepository : ITemperatureRepository
         return result;
 
     }
-    private async Task<IEnumerable<TemperatureRange>> GetStates()
+    private async Task<IEnumerable<TemperatureDataRange>> GetStates()
     {
         var states = await Task.FromResult(_Context.TemperatureRangeSet);
 
-        return (IEnumerable<TemperatureRange>)states;
+        return states;
     }
 }
