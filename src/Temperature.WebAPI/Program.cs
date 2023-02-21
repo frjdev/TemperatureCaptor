@@ -12,8 +12,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var workingDirectory = Environment.CurrentDirectory;
-var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.FullName}\Temperature.Infrastructure";
-
 var DbPath = Path.Join(workingDirectory, "Temperature.db");
 
 builder.Services.AddDbContext<TemperatureContext>(options =>
@@ -38,3 +36,5 @@ if (app.Environment.IsDevelopment())
 app.MapControllers();
 
 app.Run();
+public partial class Program { }
+

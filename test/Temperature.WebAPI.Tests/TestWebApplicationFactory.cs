@@ -20,13 +20,15 @@ public class TestWebApplicationFactory<TProgram>
                 services.Remove(descriptor);
             }
 
+            var workingDirectory = Environment.CurrentDirectory;
+            var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName}\src\Temperature.WebAPI";
+
+            var DbPath = Path.Join(dataBaseDirectory, "Temperature.db");
+
             services.AddDbContext<TemperatureContext>(options =>
             {
-                var workingDirectory = Environment.CurrentDirectory;
-                var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName}\src\Temperature.WebAPI";
-
-                var DbPath = Path.Join(dataBaseDirectory, "Temperature.db");
                 options.UseSqlite($"DataSource={DbPath}");
+
             });
         });
 

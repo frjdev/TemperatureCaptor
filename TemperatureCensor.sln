@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Temperature.Infrastructure.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature.WebAPI", "src\Temperature.WebAPI\Temperature.WebAPI.csproj", "{4CB2BDD4-7EDD-4BE1-A8EB-5D7F5E33C833}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature.WebAPI.Tests", "test\Temperature.WebAPI.Tests\Temperature.WebAPI.Tests.csproj", "{20324AA9-7D90-4338-8394-CB2D3CAC9B23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{4CB2BDD4-7EDD-4BE1-A8EB-5D7F5E33C833}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CB2BDD4-7EDD-4BE1-A8EB-5D7F5E33C833}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CB2BDD4-7EDD-4BE1-A8EB-5D7F5E33C833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20324AA9-7D90-4338-8394-CB2D3CAC9B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20324AA9-7D90-4338-8394-CB2D3CAC9B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20324AA9-7D90-4338-8394-CB2D3CAC9B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20324AA9-7D90-4338-8394-CB2D3CAC9B23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
