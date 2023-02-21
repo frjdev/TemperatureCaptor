@@ -7,4 +7,5 @@ public interface ITemperatureRepository
     Task<ImmutableList<Temperature?>> GetHistoricTempAsync();
     Task<bool> UpdateRangeStateAsync(string state, double start, double end);
     Task<string?> GetTempStateAsync(double temp);
+    Task<Temperature?> CreateTemperatureAsync(double temperature, string state);
 }

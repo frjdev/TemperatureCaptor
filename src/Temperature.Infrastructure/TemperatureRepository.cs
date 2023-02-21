@@ -107,4 +107,9 @@ public class TemperatureRepository : ITemperatureRepository
 
         return states;
     }
+
+    public Task<Domain.Temperature?> CreateTemperatureAsync(double temperature, string state)
+    {
+        throw new NotImplementedException();
+    }
 }

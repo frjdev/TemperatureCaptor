@@ -74,7 +74,7 @@ public class TemperatureServiceTest
         mockTemperatureRepo.Setup(x => x.CreateTemperatureAsync(Temp, state)).ReturnsAsync(expected);
 
         var temp = new TemperatureService(mockTemperatureRepo.Object);
-        var actual = await temp.CreateTemperatureAsync(Temp,state);
+        var actual = await temp.CreateTemperatureAsync(Temp, state);
 
         Assert.Equal(expected, actual);
     }
