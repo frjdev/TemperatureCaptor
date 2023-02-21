@@ -15,7 +15,11 @@ public class TemperatureRepository : ITemperatureRepository
     }
     public Task<ImmutableList<Domain.Temperature?>> GetHistoricTempAsync()
     {
-        throw new NotImplementedException();
+        var temperaturesData = _Context.TemperatureSet!.OrderByDescending(x => x.Date == DateTime.Now).Take(15);
+
+        var temperatures = temperaturesData.Select(x => TemperatureData.ToDomain(x)).ToImmutableList();
+
+        return Task.FromResult(temperatures);
     }
 
     public async Task<double?> GetTemperatureAsync()
@@ -44,9 +48,21 @@ public class TemperatureRepository : ITemperatureRepository
         return "HOT";
     }
 
-    public Task<bool> UpdateRangeStateAsync(int idstate, double start, double end)
+    public async Task<bool> UpdateRangeStateAsync(int idstate, double start, double end)
     {
-        throw new NotImplementedException();
+        var range = _Context.TemperatureRangeSet!.FirstOrDefault(x => x.Id == idstate);
+
+        if (range == null)
+            return false;
+
+        range.Start = start;
+        range.End = end;
+
+        _Context.TemperatureRangeSet!.Update(range);
+
+        var writtenStateEntries = await _Context.SaveChangesAsync().ConfigureAwait(false);
+
+        return writtenStateEntries == 1;
     }
     private async Task<IEnumerable<TemperatureRange>> GetStates()
     {
