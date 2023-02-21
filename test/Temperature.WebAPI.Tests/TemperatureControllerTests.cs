@@ -1,5 +1,7 @@
 using System.Collections.Immutable;
 using System.Net;
+using HelpersTests;
+using System.Text;
 using Newtonsoft.Json;
 
 namespace Temperature.WebAPI.Tests;
@@ -46,6 +48,20 @@ public class TemperatureControllerTests : IClassFixture<TestWebApplicationFactor
 
         Assert.NotNull(actualValue);
         Assert.Equal(15, actualValue.Count);
+    }
+
+    [Fact]
+    public async Task ShouldBeAbleToUpdateTheRangeOfAState()
+    {
+        var state = "HOT";
+        var stateRange = new TemperatureUpdateModel() { Start = 35, End = 60 };
+
+        var content = JsonConvert.SerializeObject(stateRange);
+        var requestBody = new StringContent(content, Encoding.UTF8, "application/json");
+
+        var response = await _HttpClient.PutAsync($"{RequestBaseUri}/{state}", requestBody);
+        Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+
     }
 
 }
