@@ -52,6 +52,26 @@ public class TemperatureRepository : ITemperatureRepository
 
         return !result ? false : await UpdateOthersStates(state);
     }
+    public async Task<Domain.Temperature?> CreateTemperatureAsync(double temperature, string state)
+    {
+        var temperatureData = new TemperatureData()
+        {
+            Temp = temperature,
+            State = state,
+            Date = DateTime.Now
+        };
+
+        await _Context.TemperatureSet.AddAsync(temperatureData);
+        var writtenState = await _Context.SaveChangesAsync();
+
+        if (writtenState != 1)
+        {
+            return null;
+        }
+
+        return TemperatureData.ToDomain(temperatureData);
+    }
+
     private async Task<bool> UpdateRangeState(string state, double start, double end)
     {
         var range = _Context.TemperatureRangeSet!.FirstOrDefault(x => x.State == state);
@@ -106,10 +126,5 @@ public class TemperatureRepository : ITemperatureRepository
         var states = await Task.FromResult(_Context.TemperatureRangeSet);
 
         return states;
-    }
-
-    public Task<Domain.Temperature?> CreateTemperatureAsync(double temperature, string state)
-    {
-        throw new NotImplementedException();
     }
 }
