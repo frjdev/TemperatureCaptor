@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<ITemperatureRepository, TemperatureRepository>();
 builder.Services.AddTransient<ITemperatureService, TemperatureService>();
 builder.Services.AddTransient<ITemperatureCaptor, TemperatureCaptorGenerator>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -30,6 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.RoutePrefix = string.Empty;
     });
 }
 app.MapControllers();
