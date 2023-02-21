@@ -1,4 +1,5 @@
 using System.Net;
+using Newtonsoft.Json;
 
 namespace Temperature.WebAPI.Tests;
 public class TemperatureControllerTests : IClassFixture<TestWebApplicationFactory<Program>>
@@ -23,6 +24,10 @@ public class TemperatureControllerTests : IClassFixture<TestWebApplicationFactor
 
         var responseAsString = await httpResponse.Content.ReadAsStringAsync();
         Assert.NotNull(responseAsString);
+
+        var actualValue = JsonConvert.DeserializeObject<TemperatureView>(responseAsString);
+
+        Assert.NotNull(actualValue);
 
     }
 

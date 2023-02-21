@@ -22,8 +22,9 @@ public class TemperatureController : ControllerBase
         {
             return TypedResults.BadRequest();
         }
-        return TypedResults.Ok(temp);
+        return TypedResults.Ok(TemperatureView.FromDomain(temp));
     }
+
     [HttpGet("{temperature}")]
     public async Task<IResult> GetTemperature(double temperature)
     {
