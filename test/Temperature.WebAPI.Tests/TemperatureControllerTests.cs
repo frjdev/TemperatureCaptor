@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Net;
 using Newtonsoft.Json;
 
@@ -28,6 +29,23 @@ public class TemperatureControllerTests : IClassFixture<TestWebApplicationFactor
         var actualValue = JsonConvert.DeserializeObject<TemperatureView>(responseAsString);
 
         Assert.NotNull(actualValue);
+    }
+
+    [Fact]
+    public async Task ShouldBeAbleToReturnTheLast15Temperatures()
+    {
+        var httpResponse = await _HttpClient.GetAsync(@$"{RequestBaseUri}\Last15Temperatures");
+
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+
+
+        var responseAsString = await httpResponse.Content.ReadAsStringAsync();
+        Assert.NotNull(responseAsString);
+
+        var actualValue = JsonConvert.DeserializeObject<ImmutableList<TemperatureView>>(responseAsString);
+
+        Assert.NotNull(actualValue);
+        Assert.Equal(15, actualValue.Count);
     }
 
 }
