@@ -4,10 +4,10 @@ using Temperature.Domain;
 namespace Temperature.Infrastructure;
 public class TemperatureRepository : ITemperatureRepository
 {
-    private readonly ITemperatureCaptor _captor;
+    private readonly ITemperatureCaptor _Captor;
     public TemperatureRepository(ITemperatureCaptor captor)
     {
-        _captor = captor;
+        _Captor = captor;
     }
     public Task<ImmutableList<Domain.Temperature?>> GetHistoricTempAsync()
     {

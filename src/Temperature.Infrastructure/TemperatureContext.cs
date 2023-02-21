@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Temperature.Domain;
 
 namespace Temperature.Infrastructure;
 public sealed class TemperatureContext : DbContext
@@ -16,4 +15,8 @@ public sealed class TemperatureContext : DbContext
     public DbSet<TemperatureData> TemperatureSet { get; set; } = default!;
     public DbSet<TemperatureDataRange> TemperatureRangeSet { get; set; } = default!;
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        base.OnConfiguring(optionsBuilder);
+    }
 }
