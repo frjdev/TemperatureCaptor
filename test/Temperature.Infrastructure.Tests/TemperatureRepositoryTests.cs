@@ -103,4 +103,26 @@ public class TemperatureRepositoryTests
             Assert.Equal(expectedStart, coldTemperaturesRange!.Start);
         }
     }
+    [Fact]
+    public async void ShouldBeAbleToCreateANewTemperature()
+    {
+        var options = BuildSqLiteDatabaseWithInitialData();
+        var temperature = 15;
+        var state = "WARM";
+
+        await using var temperatureContext = new TemperatureContext(options);
+        var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
+
+        var expected = await temperatureRepository.CreateTemperatureAsync(temperature, state);
+
+        Assert.NotNull(expected);
+
+        await using var verifyTemperatureContext = new TemperatureContext(options);
+        var actual = verifyTemperatureContext.TemperatureSet.OrderBy(x => x.Id).LastOrDefault();
+
+        Assert.NotNull(actual);
+
+        Assert.Equal(expected, TemperatureData.ToDomain(actual!));
+    }
+
 }
