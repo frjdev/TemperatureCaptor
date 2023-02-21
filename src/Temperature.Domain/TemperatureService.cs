@@ -11,7 +11,7 @@ public class TemperatureService
         _temperatureRepository = temperatureRepository;
     }
 
-    public async Task<Temperature?> GetTemperatureAsync()
+    public async Task<double?> GetTemperatureAsync()
     {
         return await _temperatureRepository.GetTemperatureAsync().ConfigureAwait(false);
     }

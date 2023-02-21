@@ -17,9 +17,9 @@ public class TemperatureRepository : ITemperatureRepository
         throw new NotImplementedException();
     }
 
-    public Task<Domain.Temperature?> GetTemperatureAsync()
+    public async Task<double?> GetTemperatureAsync()
     {
-        throw new NotImplementedException();
+        return await Task.FromResult(_Captor.CaptorTemperature()).ConfigureAwait(false);
     }
 
     public Task<string?> GetTempStateAsync(double temp)

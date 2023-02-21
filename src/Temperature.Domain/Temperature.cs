@@ -3,7 +3,7 @@ public record Temperature
 {
     public Temperature(
          int id,
-         decimal temp,
+         double temp,
          string? state,
          DateTime date)
     {
@@ -14,7 +14,7 @@ public record Temperature
     }
 
     public int Id { get; set; }
-    public decimal Temp { get; set; }
+    public double Temp { get; set; }
     public string? State { get; set; }
     public DateTime Date { get; set; }
 
