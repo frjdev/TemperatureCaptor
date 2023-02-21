@@ -12,7 +12,12 @@ public class TemperatureRepository : ITemperatureRepository
         _Captor = captor;
         _Context = context;
     }
-    public Task<ImmutableList<Domain.Temperature?>> GetHistoricTempAsync()
+
+    /// <summary>
+    /// Get the last fifteen temperatures objects
+    /// </summary>
+    /// <returns>A immutable list of temperatures</returns>
+    public Task<ImmutableList<Domain.Temperature?>> GetLast15TempAsync()
     {
         var temperaturesData = _Context.TemperatureSet!.OrderByDescending(x => x.Date).Take(15);
 
@@ -20,12 +25,19 @@ public class TemperatureRepository : ITemperatureRepository
 
         return Task.FromResult(temperatures);
     }
-
+    /// <summary>
+    /// Get a temperature value
+    /// </summary>
+    /// <returns>A double value</returns>
     public async Task<double?> GetTemperatureFromGeneratorAsync()
     {
         return await Task.FromResult(_Captor.CaptorTemperature());
     }
-
+    /// <summary>
+    /// Get the state of a temperature value
+    /// </summary>
+    /// <param name="temp"></param>
+    /// <returns>String state</returns>
     public async Task<string?> GetTempStateAsync(double temp)
     {
         var states = await GetStates();
@@ -46,12 +58,25 @@ public class TemperatureRepository : ITemperatureRepository
 
         return "HOT";
     }
+    /// <summary>
+    /// update the range of a state
+    /// </summary>
+    /// <param name="state"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <returns>true or false</returns>
     public async Task<bool> UpdateRangeStateAsync(string state, double start, double end)
     {
         var result = await UpdateRangeState(state, start, end);
 
         return !result ? false : await UpdateOthersStates(state);
     }
+    /// <summary>
+    /// Create a new temperature object
+    /// </summary>
+    /// <param name="temperature"></param>
+    /// <param name="state"></param>
+    /// <returns>A temperature </returns>
     public async Task<Domain.Temperature?> CreateTemperatureAsync(double temperature, string state)
     {
         var temperatureData = new TemperatureData()
