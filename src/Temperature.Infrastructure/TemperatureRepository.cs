@@ -135,7 +135,9 @@ public class TemperatureRepository : ITemperatureRepository
             case "WARM":
                 result = await UpdateRangeState("HOT", warm!.End, hot!.End);
                 if (result == false)
+                {
                     return false;
+                }
 
                 result = await UpdateRangeState("COLD", warm!.Start, cold!.End);
                 break;
