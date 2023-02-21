@@ -18,4 +18,19 @@ public class TemperatureRepositoryTests
 
         return _contextOptions;
     }
+
+    [Fact]
+    public async void ShouldBeAbleToReturnTheLast15Temperature()
+    {
+        var options = BuildSqLiteDatabaseWithInitialData();
+
+        await using var temperatureContext = new TemperatureContext(options);
+        {
+            var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
+
+            var actual = await temperatureRepository.GetHistoricTempAsync();
+
+            Assert.Equal(15, actual.Count);
+        }
+    }
 }
