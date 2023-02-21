@@ -23,12 +23,12 @@ public class TemperatureRepository : ITemperatureRepository
 
     public async Task<double?> GetTemperatureAsync()
     {
-        return await Task.FromResult(_Captor.CaptorTemperature()).ConfigureAwait(false);
+        return await Task.FromResult(_Captor.CaptorTemperature());
     }
 
     public async Task<string?> GetTempStateAsync(double temp)
     {
-        var states = await GetStates().ConfigureAwait(false);
+        var states = await GetStates();
 
         var warm = states.FirstOrDefault(x => x.State!.ToUpper() == "WARM");
         var cold = states.FirstOrDefault(x => x.State!.ToUpper() == "COLD");
@@ -48,9 +48,9 @@ public class TemperatureRepository : ITemperatureRepository
     }
     public async Task<bool> UpdateRangeStateAsync(string state, double start, double end)
     {
-        var result = await UpdateRangeState(state, start, end).ConfigureAwait(false);
+        var result = await UpdateRangeState(state, start, end);
 
-        return !result ? false : await UpdateOthersStates(state).ConfigureAwait(false);
+        return !result ? false : await UpdateOthersStates(state);
     }
     private async Task<bool> UpdateRangeState(string state, double start, double end)
     {
@@ -66,13 +66,13 @@ public class TemperatureRepository : ITemperatureRepository
 
         _Context.TemperatureRangeSet!.Update(range);
 
-        var writtenStateEntries = await _Context.SaveChangesAsync().ConfigureAwait(false);
+        var writtenStateEntries = await _Context.SaveChangesAsync();
 
         return writtenStateEntries == 1;
     }
     private async Task<bool> UpdateOthersStates(string state)
     {
-        var states = await GetStates().ConfigureAwait(false);
+        var states = await GetStates();
 
         var warm = states.FirstOrDefault(x => x.State!.ToUpper() == "WARM");
         var cold = states.FirstOrDefault(x => x.State!.ToUpper() == "COLD");
@@ -103,7 +103,7 @@ public class TemperatureRepository : ITemperatureRepository
     }
     private async Task<IEnumerable<TemperatureRange>> GetStates()
     {
-        var states = await Task.FromResult(_Context.TemperatureRangeSet).ConfigureAwait(false);
+        var states = await Task.FromResult(_Context.TemperatureRangeSet);
 
         return (IEnumerable<TemperatureRange>)states;
     }

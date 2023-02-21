@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Temperature.Domain.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpersTests", "test\HelpersTests\HelpersTests.csproj", "{7AF4CF27-E870-4089-BE23-EB85B4421D38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature.Infrastructure", "src\Temperature.Infrastructure\Temperature.Infrastructure.csproj", "{9744A0A0-FAFB-4922-B6D2-15024FAE1500}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Temperature.Infrastructure", "src\Temperature.Infrastructure\Temperature.Infrastructure.csproj", "{9744A0A0-FAFB-4922-B6D2-15024FAE1500}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
