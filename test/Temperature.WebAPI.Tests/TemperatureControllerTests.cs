@@ -6,13 +6,11 @@ using Newtonsoft.Json;
 namespace Temperature.WebAPI.Tests;
 public class TemperatureControllerTests : IClassFixture<TestWebApplicationFactory<Program>>
 {
-    private readonly TestWebApplicationFactory<Program> _Factory;
     private readonly HttpClient _HttpClient;
     private const string RequestBaseUri = "http://localhost/api/Temperature";
 
     public TemperatureControllerTests(TestWebApplicationFactory<Program> factory)
     {
-        _Factory = factory;
         _HttpClient = factory.CreateClient();
     }
 
