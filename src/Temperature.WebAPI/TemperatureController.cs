@@ -44,4 +44,13 @@ public class TemperatureController : ControllerBase
         }
         return TypedResults.Ok(state);
     }
+    [HttpPut("{state}")]
+    public async Task<IResult> UpdateState(string state, TemperatureUpdateModel temperatureUpdateModel)
+    {
+        var result = await _TemperatureService.UpdateRangeStateAsync(state, temperatureUpdateModel.Start, temperatureUpdateModel.End);
+        if (result == false)
+            return TypedResults.NotFound();
+
+        return TypedResults.NoContent();
+    }
 }
