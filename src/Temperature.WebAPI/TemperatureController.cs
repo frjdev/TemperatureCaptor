@@ -18,6 +18,11 @@ public class TemperatureController : ControllerBase
     {
         var temp = await _TemperatureService.GetTemperatureAsync();
 
+        if (temp == null)
+        {
+            return TypedResults.BadRequest();
+        }
         return TypedResults.Ok(temp);
     }
+
 }

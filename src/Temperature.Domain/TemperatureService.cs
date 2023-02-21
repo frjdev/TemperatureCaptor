@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 
 namespace Temperature.Domain;
 
-public class TemperatureService
+public class TemperatureService : ITemperatureService
 {
     private readonly ITemperatureRepository _TemperatureRepository;
 
