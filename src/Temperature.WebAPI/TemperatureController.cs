@@ -50,7 +50,7 @@ public class TemperatureController : ControllerBase
     [HttpGet("Last15Temperatures")]
     public async Task<IResult> GetLast15Temperatures()
     {
-        var state = await _TemperatureService.GetHistoricTempAsync();
+        var state = await _TemperatureService.GetLast15TempAsync();
         if (state == null)
         {
             return TypedResults.BadRequest();

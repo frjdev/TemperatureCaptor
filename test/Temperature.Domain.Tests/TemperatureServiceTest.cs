@@ -26,10 +26,10 @@ public class TemperatureServiceTest
         var expected = Samples.Temperatures.ToImmutableList();
 
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();
-        mockTemperatureRepo.Setup(x => x.GetHistoricTempAsync())!.ReturnsAsync(expected);
+        mockTemperatureRepo.Setup(x => x.GetLast15TempAsync())!.ReturnsAsync(expected);
 
         var temp = new TemperatureService(mockTemperatureRepo.Object);
-        var actual = await temp.GetHistoricTempAsync();
+        var actual = await temp.GetLast15TempAsync();
 
         Assert.Equal(expected, actual);
     }

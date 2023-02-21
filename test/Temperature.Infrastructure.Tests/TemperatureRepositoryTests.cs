@@ -25,7 +25,7 @@ public class TemperatureRepositoryTests
 
         await using var temperatureContext = new TemperatureContext(options);
         var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
-        var actual = await temperatureRepository.GetHistoricTempAsync();
+        var actual = await temperatureRepository.GetLast15TempAsync();
         Assert.Equal(15, actual.Count);
     }
     [Fact]

@@ -41,7 +41,7 @@ public class TemperatureService : ITemperatureService
     /// <returns>An Immutable list of temperatures</returns>
     public async Task<ImmutableList<Temperature?>> GetLast15TempAsync()
     {
-        return await _TemperatureRepository.GetHistoricTempAsync();
+        return await _TemperatureRepository.GetLast15TempAsync();
     }
     /// <summary>
     /// Update the range of a temperature
