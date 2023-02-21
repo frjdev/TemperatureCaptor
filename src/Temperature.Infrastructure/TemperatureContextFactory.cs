@@ -7,7 +7,7 @@ public class TemperatureContextFactory : IDesignTimeDbContextFactory<Temperature
     public TemperatureContext CreateDbContext(string[] args)
     {
         var workingDirectory = Environment.CurrentDirectory;
-        var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.FullName}\Temperature.Infrastructure";
+        var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.FullName}\Temperature.WebAPI";
 
         var DbPath = Path.Join(dataBaseDirectory, "Temperature.db");
 

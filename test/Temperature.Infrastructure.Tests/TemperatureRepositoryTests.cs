@@ -7,7 +7,7 @@ public class TemperatureRepositoryTests
     private static DbContextOptions<TemperatureContext> BuildSqLiteDatabaseWithInitialData()
     {
         var workingDirectory = Environment.CurrentDirectory;
-        var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName}\src\Temperature.Infrastructure";
+        var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName}\src\Temperature.WebAPI";
 
         var DbPath = Path.Join(dataBaseDirectory, "Temperature.db");
 

@@ -11,7 +11,7 @@ using Temperature.Infrastructure;
 namespace Temperature.Infrastructure.Migrations
 {
     [DbContext(typeof(TemperatureContext))]
-    [Migration("20230221120016_FirstMigration")]
+    [Migration("20230221134759_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -43,140 +43,140 @@ namespace Temperature.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 916, DateTimeKind.Local).AddTicks(8632),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 435, DateTimeKind.Local).AddTicks(5694),
                             State = "WARM",
                             Temp = 22.0
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1601),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(2970),
                             State = "COLD",
                             Temp = -3.0
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1635),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(2993),
                             State = "HOT",
                             Temp = 37.0
                         },
                         new
                         {
                             Id = 4,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1638),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(2997),
                             State = "HOT",
                             Temp = 39.0
                         },
                         new
                         {
                             Id = 5,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1640),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(2998),
                             State = "HOT",
                             Temp = 37.0
                         },
                         new
                         {
                             Id = 6,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1648),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3011),
                             State = "HOT",
                             Temp = 41.0
                         },
                         new
                         {
                             Id = 7,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1650),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3013),
                             State = "HOT",
                             Temp = 41.0
                         },
                         new
                         {
                             Id = 8,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1651),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3016),
                             State = "HOT",
                             Temp = 40.0
                         },
                         new
                         {
                             Id = 9,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1653),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3017),
                             State = "HOT",
                             Temp = 32.0
                         },
                         new
                         {
                             Id = 10,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1655),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3020),
                             State = "HOT",
                             Temp = 34.0
                         },
                         new
                         {
                             Id = 11,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1657),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3021),
                             State = "WARM",
                             Temp = 25.0
                         },
                         new
                         {
                             Id = 12,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1658),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3023),
                             State = "WARM",
                             Temp = 26.0
                         },
                         new
                         {
                             Id = 13,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1660),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3024),
                             State = "COLD",
                             Temp = 20.0
                         },
                         new
                         {
                             Id = 14,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1661),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3027),
                             State = "COLD",
                             Temp = 16.0
                         },
                         new
                         {
                             Id = 15,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1663),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3028),
                             State = "COLD",
                             Temp = 14.0
                         },
                         new
                         {
                             Id = 16,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1664),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3030),
                             State = "COLD",
                             Temp = -3.0
                         },
                         new
                         {
                             Id = 17,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1665),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3031),
                             State = "HOT",
                             Temp = 30.0
                         },
                         new
                         {
                             Id = 18,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1668),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3034),
                             State = "WARM",
                             Temp = 28.0
                         },
                         new
                         {
                             Id = 19,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1669),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3036),
                             State = "WARM",
                             Temp = 26.0
                         },
                         new
                         {
                             Id = 20,
-                            Date = new DateTime(2023, 2, 21, 13, 0, 15, 919, DateTimeKind.Local).AddTicks(1670),
+                            Date = new DateTime(2023, 2, 21, 14, 47, 59, 438, DateTimeKind.Local).AddTicks(3037),
                             State = "COLD",
                             Temp = -3.0
                         });
