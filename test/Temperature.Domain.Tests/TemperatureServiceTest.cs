@@ -9,7 +9,7 @@ public class TemperatureServiceTest
     [Fact]
     public async Task ShouldBeAbleToReturnATemperature()
     {
-        double? expected = Samples.temperatures.FirstOrDefault()!.Temp;
+        double? expected = Samples.Temperatures.FirstOrDefault()!.Temp;
 
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();
         mockTemperatureRepo.Setup(x => x.GetTemperatureAsync()).Returns(Task.FromResult(expected));
@@ -23,7 +23,7 @@ public class TemperatureServiceTest
     [Fact]
     public async Task ShouldBeAbleToReturnTheHisotricsOfLast15Temperature()
     {
-        var expected = Samples.temperatures.ToImmutableList();
+        var expected = Samples.Temperatures.ToImmutableList();
 
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();
         mockTemperatureRepo.Setup(x => x.GetHistoricTempAsync())!.ReturnsAsync(expected);
@@ -36,7 +36,7 @@ public class TemperatureServiceTest
     [Fact]
     public async Task ShouldBeAbleToUpdateARangeState()
     {
-        var warmTemp = Samples.temperaturesRange.FirstOrDefault();
+        var warmTemp = Samples.TemperaturesRange.FirstOrDefault();
         var expected = new TemperatureRange(warmTemp!.Id, warmTemp.State, 25, 40);
 
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();

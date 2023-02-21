@@ -14,7 +14,7 @@ public class TemperatureRepository : ITemperatureRepository
     }
     public Task<ImmutableList<Domain.Temperature?>> GetHistoricTempAsync()
     {
-        var temperaturesData = _Context.TemperatureSet!.OrderByDescending(x => x.Date == DateTime.Now).Take(15);
+        var temperaturesData = _Context.TemperatureSet!.OrderByDescending(x => x.Date).Take(15);
 
         var temperatures = temperaturesData.Select(x => TemperatureData.ToDomain(x)).ToImmutableList();
 
