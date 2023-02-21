@@ -24,5 +24,14 @@ public class TemperatureController : ControllerBase
         }
         return TypedResults.Ok(temp);
     }
-
+    [HttpGet("{temperature}")]
+    public async Task<IResult> GetTemperature(double temperature)
+    {
+        var state = await _TemperatureService.GetTempStateAsync(temperature);
+        if (state == null)
+        {
+            return TypedResults.BadRequest();
+        }
+        return TypedResults.Ok(state);
+    }
 }
