@@ -21,7 +21,7 @@ public class TemperatureRepository : ITemperatureRepository
         return Task.FromResult(temperatures);
     }
 
-    public async Task<double?> GetTemperatureAsync()
+    public async Task<double?> GetTemperatureFromGeneratorAsync()
     {
         return await Task.FromResult(_Captor.CaptorTemperature());
     }

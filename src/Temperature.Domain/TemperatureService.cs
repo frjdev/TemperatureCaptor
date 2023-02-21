@@ -10,10 +10,22 @@ public class TemperatureService : ITemperatureService
     {
         _TemperatureRepository = temperatureRepository;
     }
-
-    public async Task<double?> GetTemperatureAsync()
+    public async Task<double?> GetTemperatureFromGeneratorAsync()
     {
-        return await _TemperatureRepository.GetTemperatureAsync();
+        return await _TemperatureRepository.GetTemperatureFromGeneratorAsync();
+    }
+    public async Task<Temperature?> GetTemperatureAsync()
+    {
+        var temp = await _TemperatureRepository.GetTemperatureFromGeneratorAsync();
+        if (temp == null)
+        {
+            return null;
+        }
+        var state = await _TemperatureRepository.GetTempStateAsync((double)temp);
+        var temperature = await _TemperatureRepository.CreateTemperatureAsync((double)temp, state!);
+
+        return temperature!;
+
     }
     public async Task<ImmutableList<Temperature?>> GetHistoricTempAsync()
     {
@@ -23,9 +35,9 @@ public class TemperatureService : ITemperatureService
     {
         return await _TemperatureRepository.UpdateRangeStateAsync(state, start, end);
     }
-    public async Task<string?> GetTempStateAsync(double temperature)
+    public async Task<string?> GetTempStateAsync(double temp)
     {
-        return await _TemperatureRepository.GetTempStateAsync(temperature);
+        return await _TemperatureRepository.GetTempStateAsync(temp);
     }
     public async Task<Temperature?> CreateTemperatureAsync(double temperature, string state)
     {

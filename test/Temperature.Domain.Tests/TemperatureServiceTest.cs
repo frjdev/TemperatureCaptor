@@ -7,15 +7,15 @@ namespace Temperature.Domain.Tests;
 public class TemperatureServiceTest
 {
     [Fact]
-    public async Task ShouldBeAbleToReturnATemperature()
+    public async Task ShouldBeAbleToReturnATemperatureFromGenerator()
     {
         double? expected = Samples.Temperatures.FirstOrDefault()!.Temp;
 
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();
-        mockTemperatureRepo.Setup(x => x.GetTemperatureAsync()).Returns(Task.FromResult(expected));
+        mockTemperatureRepo.Setup(x => x.GetTemperatureFromGeneratorAsync()).Returns(Task.FromResult(expected));
 
         var temp = new TemperatureService(mockTemperatureRepo.Object);
-        var actual = await temp.GetTemperatureAsync();
+        var actual = await temp.GetTemperatureFromGeneratorAsync();
 
         Assert.Equal(expected, actual);
     }
