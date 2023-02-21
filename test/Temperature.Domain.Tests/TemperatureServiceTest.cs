@@ -63,4 +63,20 @@ public class TemperatureServiceTest
         Assert.Equal(expected, actual);
     }
 
+    [Fact]
+    public async Task ShouldBeAbleToCreateATemperature()
+    {
+        var Temp = 25;
+        var state = "WARM";
+        var expected = new Temperature(int.MaxValue, Temp, state, DateTime.Now);
+
+        var mockTemperatureRepo = new Mock<ITemperatureRepository>();
+        mockTemperatureRepo.Setup(x => x.CreateTemperatureAsync(Temp, state)).ReturnsAsync(expected);
+
+        var temp = new TemperatureService(mockTemperatureRepo.Object);
+        var actual = await temp.CreateTemperatureAsync(Temp,state);
+
+        Assert.Equal(expected, actual);
+    }
+
 }
