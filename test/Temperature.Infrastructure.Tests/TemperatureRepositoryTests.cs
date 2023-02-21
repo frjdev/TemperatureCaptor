@@ -1,4 +1,3 @@
-using HelpersTests;
 using Microsoft.EntityFrameworkCore;
 
 namespace Temperature.Infrastructure.Tests;
@@ -56,7 +55,6 @@ public class TemperatureRepositoryTests
             Assert.Equal(expectedStart, warmTemperaturesRange!.End);
         }
     }
-
     [Fact]
     public async void ShouldBeAbleToUpdateColdRangeTemperature()
     {
