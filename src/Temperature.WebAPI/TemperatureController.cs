@@ -48,9 +48,6 @@ public class TemperatureController : ControllerBase
     public async Task<IResult> UpdateState(string state, TemperatureUpdateModel temperatureUpdateModel)
     {
         var result = await _TemperatureService.UpdateRangeStateAsync(state, temperatureUpdateModel.Start, temperatureUpdateModel.End);
-        if (result == false)
-            return TypedResults.NotFound();
-
-        return TypedResults.NoContent();
+        return result == false ? TypedResults.NotFound() : TypedResults.NoContent();
     }
 }

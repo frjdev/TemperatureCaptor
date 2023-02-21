@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<ITemperatureRepository, TemperatureRepository>();
 builder.Services.AddTransient<ITemperatureService, TemperatureService>();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var workingDirectory = Environment.CurrentDirectory;
 var dataBaseDirectory = $@"{Directory.GetParent(workingDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName}\src\Temperature.Infrastructure";
@@ -21,6 +23,14 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    });
+}
 app.MapControllers();
 
 app.Run();
