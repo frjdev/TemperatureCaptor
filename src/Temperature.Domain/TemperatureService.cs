@@ -4,27 +4,27 @@ namespace Temperature.Domain;
 
 public class TemperatureService
 {
-    public readonly ITemperatureRepository _temperatureRepository;
+    private readonly ITemperatureRepository _TemperatureRepository;
 
     public TemperatureService(ITemperatureRepository temperatureRepository)
     {
-        _temperatureRepository = temperatureRepository;
+        _TemperatureRepository = temperatureRepository;
     }
 
     public async Task<double?> GetTemperatureAsync()
     {
-        return await _temperatureRepository.GetTemperatureAsync().ConfigureAwait(false);
+        return await _TemperatureRepository.GetTemperatureAsync().ConfigureAwait(false);
     }
     public async Task<ImmutableList<Temperature?>> GetHistoricTempAsync()
     {
-        return await _temperatureRepository.GetHistoricTempAsync().ConfigureAwait(false);
+        return await _TemperatureRepository.GetHistoricTempAsync().ConfigureAwait(false);
     }
-    public async Task<bool> UpdateRangeStateAsync(int idState, double start, double end)
+    public async Task<bool> UpdateRangeStateAsync(string state, double start, double end)
     {
-        return await _temperatureRepository.UpdateRangeStateAsync(idState, start, end).ConfigureAwait(false);
+        return await _TemperatureRepository.UpdateRangeStateAsync(state, start, end).ConfigureAwait(false);
     }
     public async Task<string?> GetTempStateAsync(double temperature)
     {
-        return await _temperatureRepository.GetTempStateAsync(temperature).ConfigureAwait(false);
+        return await _TemperatureRepository.GetTempStateAsync(temperature).ConfigureAwait(false);
     }
 }

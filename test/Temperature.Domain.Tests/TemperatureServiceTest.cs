@@ -40,10 +40,10 @@ public class TemperatureServiceTest
         var expected = new TemperatureRange(warmTemp!.Id, warmTemp.State, 25, 40);
 
         var mockTemperatureRepo = new Mock<ITemperatureRepository>();
-        mockTemperatureRepo.Setup(x => x.UpdateRangeStateAsync(expected!.Id, expected.Start, expected.End)).ReturnsAsync(true);
+        mockTemperatureRepo.Setup(x => x.UpdateRangeStateAsync(expected.State!, expected.Start, expected.End)).ReturnsAsync(true);
 
         var temp = new TemperatureService(mockTemperatureRepo.Object);
-        var actual = await temp.UpdateRangeStateAsync(expected!.Id, expected.Start, expected.End).ConfigureAwait(false);
+        var actual = await temp.UpdateRangeStateAsync(expected.State!, expected.Start, expected.End).ConfigureAwait(false);
 
         Assert.True(actual);
     }
@@ -60,7 +60,7 @@ public class TemperatureServiceTest
         var temp = new TemperatureService(mockTemperatureRepo.Object);
         var actual = await temp.GetTempStateAsync(warmTemp).ConfigureAwait(false);
 
-        Assert.Equal(expected,actual);
+        Assert.Equal(expected, actual);
     }
 
 }

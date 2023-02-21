@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using Microsoft.EntityFrameworkCore;
 using Temperature.Domain;
 
 namespace Temperature.Infrastructure;
@@ -47,7 +46,6 @@ public class TemperatureRepository : ITemperatureRepository
 
         return "HOT";
     }
-
     public async Task<bool> UpdateRangeStateAsync(string state, double start, double end)
     {
         var result = await UpdateRangeState(state, start, end).ConfigureAwait(false);
