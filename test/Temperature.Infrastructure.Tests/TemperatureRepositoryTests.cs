@@ -56,4 +56,28 @@ public class TemperatureRepositoryTests
             Assert.Equal(expectedStart, warmTemperaturesRange!.End);
         }
     }
+
+    [Fact]
+    public async void ShouldBeAbleToUpdateColdRangeTemperature()
+    {
+        var options = BuildSqLiteDatabaseWithInitialData();
+        var expectedStart = 15;
+        var expectedEnd = -60;
+
+        await using var temperatureContext = new TemperatureContext(options);
+        {
+            var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
+
+            var result = await temperatureRepository.UpdateRangeStateAsync("COLD", expectedStart, expectedEnd);
+
+            Assert.True(result);
+        }
+
+        await using var verifyTemperatureContext = new TemperatureContext(options);
+        {
+            var warmTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "WARM");
+
+            Assert.Equal(expectedStart, warmTemperaturesRange!.Start);
+        }
+    }
 }
