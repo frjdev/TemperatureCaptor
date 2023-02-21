@@ -24,13 +24,9 @@ public class TemperatureRepositoryTests
         var options = BuildSqLiteDatabaseWithInitialData();
 
         await using var temperatureContext = new TemperatureContext(options);
-        {
-            var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
-
-            var actual = await temperatureRepository.GetHistoricTempAsync();
-
-            Assert.Equal(15, actual.Count);
-        }
+        var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
+        var actual = await temperatureRepository.GetHistoricTempAsync();
+        Assert.Equal(15, actual.Count);
     }
     [Fact]
     public async void ShouldBeAbleToUpdateHotRangeTemperature()
@@ -40,20 +36,13 @@ public class TemperatureRepositoryTests
         var expectedEnd = 60;
 
         await using var temperatureContext = new TemperatureContext(options);
-        {
-            var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
-
-            var result = await temperatureRepository.UpdateRangeStateAsync("HOT", expectedStart, expectedEnd);
-
-            Assert.True(result);
-        }
+        var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
+        var result = await temperatureRepository.UpdateRangeStateAsync("HOT", expectedStart, expectedEnd);
+        Assert.True(result);
 
         await using var verifyTemperatureContext = new TemperatureContext(options);
-        {
-            var warmTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "WARM");
-
-            Assert.Equal(expectedStart, warmTemperaturesRange!.End);
-        }
+        var warmTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "WARM");
+        Assert.Equal(expectedStart, warmTemperaturesRange!.End);
     }
     [Fact]
     public async void ShouldBeAbleToUpdateColdRangeTemperature()
@@ -63,20 +52,13 @@ public class TemperatureRepositoryTests
         var expectedEnd = -60;
 
         await using var temperatureContext = new TemperatureContext(options);
-        {
-            var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
-
-            var result = await temperatureRepository.UpdateRangeStateAsync("COLD", expectedStart, expectedEnd);
-
-            Assert.True(result);
-        }
+        var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
+        var result = await temperatureRepository.UpdateRangeStateAsync("COLD", expectedStart, expectedEnd);
+        Assert.True(result);
 
         await using var verifyTemperatureContext = new TemperatureContext(options);
-        {
-            var warmTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "WARM");
-
-            Assert.Equal(expectedStart, warmTemperaturesRange!.Start);
-        }
+        var warmTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "WARM");
+        Assert.Equal(expectedStart, warmTemperaturesRange!.Start);
     }
     [Fact]
     public async void ShouldBeAbleToUpdateWarmRangeTemperature()
@@ -86,22 +68,15 @@ public class TemperatureRepositoryTests
         var expectedEnd = 30;
 
         await using var temperatureContext = new TemperatureContext(options);
-        {
-            var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
-
-            var result = await temperatureRepository.UpdateRangeStateAsync("WARM", expectedStart, expectedEnd);
-
-            Assert.True(result);
-        }
+        var temperatureRepository = new TemperatureRepository(temperatureContext, new TemperatureCaptorGenerator());
+        var result = await temperatureRepository.UpdateRangeStateAsync("WARM", expectedStart, expectedEnd);
+        Assert.True(result);
 
         await using var verifyTemperatureContext = new TemperatureContext(options);
-        {
-            var hotTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "HOT");
-            var coldTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "COLD");
-
-            Assert.Equal(expectedEnd, hotTemperaturesRange!.Start);
-            Assert.Equal(expectedStart, coldTemperaturesRange!.Start);
-        }
+        var hotTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "HOT");
+        var coldTemperaturesRange = await verifyTemperatureContext.TemperatureRangeSet.FirstOrDefaultAsync(x => x.State == "COLD");
+        Assert.Equal(expectedEnd, hotTemperaturesRange!.Start);
+        Assert.Equal(expectedStart, coldTemperaturesRange!.Start);
     }
     [Fact]
     public async void ShouldBeAbleToCreateANewTemperature()
