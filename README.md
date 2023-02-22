@@ -1,13 +1,6 @@
 ## Built with ##
 Ce kata est implémenté en utilisant l'architecture hexagonale, C#.NET Core 7 et suit le cycle TDD red/green/refactor avec xUnit
 
-## General ##
-Le but de ce kata est de voir comment vous abordez un problème particulier dans un contexte réel.
-
-Veuillez considérer votre travail comme du code qui sera prêt pour faire la mise en production.
-
-Une fois que vous avez terminé, merci de créer une Pull Request sur votre feature branche vers la branche `main` à fin que les membres de l'équipe puissent vous faire des commentaires.
-
 ## Objectifs ##
 Dans le cadre de ce projet, nous souhaitons avoir une Api avec les spécifications suivantes:
 1. Je veux que mon sensor récupère la température provenant du composant `TemperatureCaptor` (renvoi la température en °C);
